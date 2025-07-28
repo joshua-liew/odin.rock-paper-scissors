@@ -72,9 +72,13 @@ function playGame() {
         if (winnerRound === 'Computer')  computerScore++;
     }
 
-    const winnerGame = humanScore > computerScore ? "Human" : "Computer";
-    const winnerGameScore = humanScore > computerScore ? humanScore : computerScore;
-    console.log(`The winner is the ${winnerGame} with a score of ${winnerGameScore}!`);
+    if (humanScore === computerScore) {
+        console.log(`This game is a draw!`);
+    } else {
+        const winnerGame = humanScore > computerScore ? "Human" : "Computer";
+        const winnerGameScore = humanScore > computerScore ? humanScore : computerScore;
+        console.log(`The winner is the ${winnerGame} with a score of ${winnerGameScore}!`);
+    }
 }
 
 playGame();
