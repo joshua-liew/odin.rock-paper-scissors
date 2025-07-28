@@ -41,8 +41,21 @@ function getComputerChoice() {
 
 
 function getHumanChoice() {
-    let input = prompt("Answer 0 for rock, 1 for paper, 2 for scissors");
-    return choice(Number(input));
+    let input = prompt("What do you pick? (Type one of Rock, Paper, or Scissors)");
+    let choice = function (n) {
+        switch (n.toLowerCase()) {
+            case "rock":
+                return "Rock";
+            case "paper":
+                return "Paper";
+            case "scissors":
+                return "Scissors";
+            default:
+                throw new RangeError("Argument must be one of Rock, Paper, or Scissors");
+                break;
+        }
+    };
+    return choice(input);
 }
 
 //console.log(getComputerChoice());
