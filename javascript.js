@@ -1,4 +1,30 @@
 //console.log("Hello world!");
+function choice(n) {
+    // function that takes in number
+    // between 1 and 3
+    // and returns a string
+    let choice;
+    switch (n) {
+        case 0:
+            choice = "rock";
+            break;
+        case 1:
+            choice = "paper";
+            break;
+        case 2:
+            choice = "scissors";
+            break;
+        default:
+            throw new RangeError("Argument must be a number between 0 and 2");
+            break;
+    }
+    return choice;
+}
+
+console.log(choice(0));
+console.log(choice(1));
+console.log(choice(2));
+console.log(choice(3));
 
 function getComputerChoice() {
     let rand = Math.floor(Math.random() * 3);
@@ -13,6 +39,9 @@ function getComputerChoice() {
             break;
         case 2:
             choice = "scissors";
+            break;
+        default:
+            throw new RangeError("Argument must be a number between 0 and 2");
             break;
     }
     return choice;
@@ -35,5 +64,3 @@ function getHumanChoice() {
     }
     return choice;
 }
-
-console.log(getHumanChoice());
