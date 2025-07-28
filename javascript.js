@@ -44,9 +44,9 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         result = `Draw! ${humanChoice} on ${computerChoice}`;
     } else if (
-        humanChoice === "rock" && computerChoice === "scissors" 
-        || humanChoice === "scissors" && computerChoice === "paper"
-        || humanChoice === "paper" && computerChoice === "rock"
+        humanChoice === "Rock" && computerChoice === "Scissors" 
+        || humanChoice === "Scissors" && computerChoice === "Paper"
+        || humanChoice === "Paper" && computerChoice === "Rock"
     ) {
         result = `You win! ${humanChoice} beats ${computerChoice}`;
         winner = `Human`;
@@ -72,9 +72,9 @@ function playGame() {
         if (winnerRound === 'Computer')  computerScore++;
     }
 
-    const winner = humanScore > computerScore ? "human" : "computer";
-    const winnerScore = humanScore > computerScore ? humanScore : computerScore;
-    console.log(`The winner is the ${winner} with a score of ${winnerScore}!`);
+    const winnerGame = humanScore > computerScore ? "Human" : "Computer";
+    const winnerGameScore = humanScore > computerScore ? humanScore : computerScore;
+    console.log(`The winner is the ${winnerGame} with a score of ${winnerGameScore}!`);
 }
 
 playGame();
