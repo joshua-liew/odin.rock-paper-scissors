@@ -37,3 +37,34 @@ function getHumanChoice() {
 
 //console.log(getComputerChoice());
 //console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice) {
+    let result;
+    if (humanChoice === computerChoice) {
+        result = "draw";
+    } else if (
+        humanChoice === "rock" && computerChoice === "scissors" 
+        || humanChoice === "scissors" && computerChoice === "paper"
+        || humanChoice === "paper" && computerChoice === "rock"
+    ) {
+        result = "win";
+    } else {
+        result = "lose";
+    }
+    console.log("Your choice: " + humanChoice);
+    console.log("Computer choice: " + computerChoice);
+    console.log(result);
+}
+
+//const humanSelection = getHumanChoice();
+//const computerSelection = getComputerChoice();
+
+//playRound(humanSelection, computerSelection);
+//playRound("rock", "rock");
+//playRound("rock", "scissors");
+//playRound("rock", "paper");
+//playRound("scissors", "rock");
+//playRound("scissors", "scissors");
+//playRound("scissors", "paper");
+//playRound("paper", "rock");
+//playRound("paper", "scissors");
+//playRound("paper", "paper");
