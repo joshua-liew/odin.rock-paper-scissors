@@ -1,4 +1,6 @@
-//console.log("Hello world!");
+let humanScore = 0;
+let computerScore = 0;
+
 function choice(n) {
     // function that takes in number
     // between 1 and 3
