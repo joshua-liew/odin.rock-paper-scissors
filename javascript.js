@@ -18,4 +18,22 @@ function getComputerChoice() {
     return choice;
 }
 
-console.log(getComputerChoice());
+//console.log(getComputerChoice());
+
+function getHumanChoice() {
+    let choice = prompt("Answer 0 for rock, 1 for paper, 2 for scissors");
+    switch (Number(choice)) {
+        case 0:
+            choice = "rock";
+            break;
+        case 1:
+            choice = "paper";
+            break;
+        case 2:
+            choice = "scissors";
+            break;
+    }
+    return choice;
+}
+
+console.log(getHumanChoice());
