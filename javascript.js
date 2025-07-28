@@ -40,25 +40,25 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice) {
     let result;
     if (humanChoice === computerChoice) {
-        result = "draw";
+        result = `Draw! ${humanChoice} on ${computerChoice}`;
     } else if (
         humanChoice === "rock" && computerChoice === "scissors" 
         || humanChoice === "scissors" && computerChoice === "paper"
         || humanChoice === "paper" && computerChoice === "rock"
     ) {
-        result = "win";
+        result = `You win! ${humanChoice} beats ${computerChoice}`;
+        humanScore++;
     } else {
-        result = "lose";
+        result = `You lose! ${humanChoice} loses to ${computerChoice}`;
+        computerScore++;
     }
-    console.log("Your choice: " + humanChoice);
-    console.log("Computer choice: " + computerChoice);
     console.log(result);
 }
 
-//const humanSelection = getHumanChoice();
-//const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
-//playRound(humanSelection, computerSelection);
+playRound(humanSelection, computerSelection);
 //playRound("rock", "rock");
 //playRound("rock", "scissors");
 //playRound("rock", "paper");
