@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function choice(n) {
     // function that takes in number
     // between 1 and 3
@@ -39,6 +36,7 @@ function getHumanChoice() {
 //console.log(getHumanChoice());
 function playRound(humanChoice, computerChoice) {
     let result;
+    let winner;
     if (humanChoice === computerChoice) {
         result = `Draw! ${humanChoice} on ${computerChoice}`;
     } else if (
@@ -47,24 +45,32 @@ function playRound(humanChoice, computerChoice) {
         || humanChoice === "paper" && computerChoice === "rock"
     ) {
         result = `You win! ${humanChoice} beats ${computerChoice}`;
-        humanScore++;
+        winner = `Human`;
     } else {
         result = `You lose! ${humanChoice} loses to ${computerChoice}`;
-        computerScore++;
+        winner = `Computer`;
     }
     console.log(result);
+
+    return winner;
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
 
-playRound(humanSelection, computerSelection);
-//playRound("rock", "rock");
-//playRound("rock", "scissors");
-//playRound("rock", "paper");
-//playRound("scissors", "rock");
-//playRound("scissors", "scissors");
-//playRound("scissors", "paper");
-//playRound("paper", "rock");
-//playRound("paper", "scissors");
-//playRound("paper", "paper");
+    for (let i = 0; i < 5; i++) {
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+
+        let winnerRound = playRound(humanSelection, computerSelection);
+        if (winnerRound === 'Human')    humanScore++;
+        if (winnerRound === 'Computer')  computerScore++;
+    }
+
+    const winner = humanScore > computerScore ? "human" : "computer";
+    const winnerScore = humanScore > computerScore ? humanScore : computerScore;
+    console.log(`The winner is the ${winner} with a score of ${winnerScore}!`);
+}
+
+playGame();
