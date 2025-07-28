@@ -21,46 +21,17 @@ function choice(n) {
     return choice;
 }
 
-console.log(choice(0));
-console.log(choice(1));
-console.log(choice(2));
-console.log(choice(3));
-
 function getComputerChoice() {
     let rand = Math.floor(Math.random() * 3);
     //console.log(rand);
-    let choice;
-    switch (rand) {
-        case 0:
-            choice = "rock";
-            break;
-        case 1:
-            choice = "paper";
-            break;
-        case 2:
-            choice = "scissors";
-            break;
-        default:
-            throw new RangeError("Argument must be a number between 0 and 2");
-            break;
-    }
-    return choice;
+    return choice(rand);
+}
+
+
+function getHumanChoice() {
+    let input = prompt("Answer 0 for rock, 1 for paper, 2 for scissors");
+    return choice(Number(input));
 }
 
 //console.log(getComputerChoice());
-
-function getHumanChoice() {
-    let choice = prompt("Answer 0 for rock, 1 for paper, 2 for scissors");
-    switch (Number(choice)) {
-        case 0:
-            choice = "rock";
-            break;
-        case 1:
-            choice = "paper";
-            break;
-        case 2:
-            choice = "scissors";
-            break;
-    }
-    return choice;
-}
+//console.log(getHumanChoice());
