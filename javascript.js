@@ -23,6 +23,19 @@ function choice(n) {
 function getComputerChoice() {
     let rand = Math.floor(Math.random() * 3);
     //console.log(rand);
+    let choice = function (n) {
+        switch (n) {
+            case 0:
+                return "Rock";
+            case 1:
+                return "Paper";
+            case 2:
+                return "Scissors";
+            default:
+                throw new RangeError("Argument must be a number between 0 and 2");
+                break;
+        }
+    };
     return choice(rand);
 }
 
