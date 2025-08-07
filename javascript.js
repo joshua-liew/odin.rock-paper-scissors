@@ -82,7 +82,9 @@ function displayResult(resultRound, resultAllRounds) {
 
 function updateScores(winner) {
     if (winner !== null) {
-        resultScore[winner]++;
+        resultScore.map((player) => {
+            return player.name === winner ? ++player.score : player.score;
+        })
     }
 }
 
@@ -106,29 +108,28 @@ buttons.forEach((button) => {
 
 const body = document.querySelector("body");
 const resultAllRounds = [];
-const resultScore = {
-    "Human": 0,
-    "Computer": 0,
-};
+const resultScore = [
+    {name: 'Human', score: 0},
+    {name: 'Computer', score: 0},
+]
 body.addEventListener("play", (e) => {
     const resultRound = playRound(e.detail.humanChoice, getComputerChoice());
     resultAllRounds.push(resultRound);
 
-    displayResult(resultRound, resultAllRounds);
-    
     updateScores(resultRound.winner);
-    if (resultScore[resultRound.winner] === 5) {
-        console.log("One player has reached 5 wins!");
-        const resultGame = document.createElement("h3");
-        const score = document.querySelector("#score");
-        resultGame.textContent = `The winner is ${resultRound.winner}`;
-        score.appendChild(resultGame);
-    }
+    displayResult(resultRound, resultAllRounds);
+    //if (resultScore[resultRound.winner] === 5) {
+        //console.log("One player has reached 5 wins!");
+        //const resultGame = document.createElement("h3");
+        //const score = document.querySelector("#score");
+        //resultGame.textContent = `The winner is ${resultRound.winner}`;
+        //score.appendChild(resultGame);
+    //}
 
     const divHumanScore = document.querySelector("#human-score");
     const divComputerScore = document.querySelector("#computer-score");
-    divHumanScore.textContent = `Your Score: ${resultScore.Human}`;
-    divComputerScore.textContent = `Computer Score: ${resultScore.Computer}`;
+    divHumanScore.textContent = `Your Score: ${resultScore[0].score}`;
+    divComputerScore.textContent = `Computer Score: ${resultScore[1].score}`;
 
     console.log(resultScore);
 });
