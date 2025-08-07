@@ -42,6 +42,7 @@ function playRound(humanChoice, computerChoice) {
     let winner;
     if (humanChoice === computerChoice) {
         result = `Draw! ${humanChoice} on ${computerChoice}`;
+        winner = null;
     } else if (
         humanChoice === "Rock" && computerChoice === "Scissors" 
         || humanChoice === "Scissors" && computerChoice === "Paper"
