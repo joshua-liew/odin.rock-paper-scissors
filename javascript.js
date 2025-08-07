@@ -76,5 +76,6 @@ buttons.forEach((button) => {
         //console.log(getHumanChoice(e.target.id));
         let humanChoice = getHumanChoice(e.target.id);
         console.log(humanChoice);
+        playRound(humanChoice, getComputerChoice());
     });
 })
