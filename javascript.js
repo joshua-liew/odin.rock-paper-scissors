@@ -73,9 +73,22 @@ function displayResult(text) {
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        //console.log(getHumanChoice(e.target.id));
         let humanChoice = getHumanChoice(e.target.id);
-        console.log(humanChoice);
-        playRound(humanChoice, getComputerChoice());
+
+        let eventPlay = new CustomEvent('play', {
+            bubbles: true,
+            detail: {
+                humanChoice: humanChoice,
+            },
+        });
+
+        button.dispatchEvent(eventPlay);
     });
-})
+});
+
+
+const body = document.querySelector("body");
+body.addEventListener("play", (e) => {
+    const humanChoice = e.detail.humanChoice;
+    console.log(humanChoice);
+});
