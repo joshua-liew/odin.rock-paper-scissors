@@ -88,6 +88,14 @@ function displayWinner(winner) {
 }
 
 
+function displayScore() {
+    const divHumanScore = document.querySelector("#human-score");
+    const divComputerScore = document.querySelector("#computer-score");
+    divHumanScore.textContent = `Your Score: ${resultScore[0].score}`;
+    divComputerScore.textContent = `Computer Score: ${resultScore[1].score}`;
+}
+
+
 function updateScores(winner) {
     if (winner !== null) {
         resultScore.map((player) => {
@@ -139,11 +147,5 @@ body.addEventListener("play", (e) => {
         displayWinner(gameWinner);
 
     displayResult(resultRound, resultAllRounds);
-
-    const divHumanScore = document.querySelector("#human-score");
-    const divComputerScore = document.querySelector("#computer-score");
-    divHumanScore.textContent = `Your Score: ${resultScore[0].score}`;
-    divComputerScore.textContent = `Computer Score: ${resultScore[1].score}`;
-
-    console.log(resultScore);
+    displayScore();
 });
