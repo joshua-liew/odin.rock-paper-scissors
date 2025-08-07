@@ -76,7 +76,7 @@ function displayResult(resultRound, resultAllRounds) {
 
     div.appendChild(displayRound);
     div.appendChild(displayRoundResult);
-    result.appendChild(div);
+    result.insertBefore(div, result.firstChild);
 }
 
 
