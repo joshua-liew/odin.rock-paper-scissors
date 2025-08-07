@@ -36,8 +36,7 @@ function getHumanChoice(input) {
     return choice(input);
 }
 
-//console.log(getComputerChoice());
-//console.log(getHumanChoice());
+
 function playRound(humanChoice, computerChoice) {
     let result;
     let winner;
@@ -54,10 +53,11 @@ function playRound(humanChoice, computerChoice) {
         result = `You lose! ${humanChoice} loses to ${computerChoice}`;
         winner = `Computer`;
     }
-    //console.log(result);
-    displayResult(result);
 
-    return winner;
+    return {
+        result: result,
+        winner: winner,
+    };
 }
 
 
@@ -90,5 +90,6 @@ buttons.forEach((button) => {
 const body = document.querySelector("body");
 body.addEventListener("play", (e) => {
     const humanChoice = e.detail.humanChoice;
-    console.log(humanChoice);
+    const resultRound = playRound(humanChoice, getComputerChoice());
+    console.log(resultRound);
 });
