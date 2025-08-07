@@ -85,6 +85,7 @@ function displayWinner(winner) {
     const div = document.querySelector("#score");
     resultGame.textContent = `The winner is ${winner.name}!`;
     div.append(resultGame);
+    div.style["background-color"] = "#EED6D2";
 }
 
 
