@@ -98,7 +98,7 @@ function updateScores(winner) {
 
 
 // returns object {player: str, score: int} or null
-function checkWinner() {
+function getWinner() {
     const check = resultScore.filter((player) => player.score === 5);
     if (check.length !== 0) return check[0];
     return null;
@@ -134,7 +134,7 @@ body.addEventListener("play", (e) => {
 
     updateScores(resultRound.winner);
 
-    const gameWinner = checkWinner();
+    const gameWinner = getWinner();
     if (gameWinner !== null)
         displayWinner(gameWinner);
 
