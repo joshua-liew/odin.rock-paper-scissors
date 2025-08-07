@@ -62,11 +62,8 @@ function playRound(humanChoice, computerChoice) {
 
 
 function displayResult(text) {
-    const p = document.createElement("p");
+    const p = document.querySelector("#result");
     p.textContent = text;
-
-    const result = document.querySelector("#result");
-    result.appendChild(p);
 }
 
 
@@ -92,4 +89,6 @@ body.addEventListener("play", (e) => {
     const humanChoice = e.detail.humanChoice;
     const resultRound = playRound(humanChoice, getComputerChoice());
     console.log(resultRound);
+
+    displayResult(resultRound.result);
 });
