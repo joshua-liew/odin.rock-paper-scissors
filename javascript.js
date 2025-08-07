@@ -62,6 +62,24 @@ function playRound(humanChoice, computerChoice) {
 }
 
 
+function displayResult(resultRound, resultAllRounds) {
+    const result = document.querySelector("#result");
+    
+    const div = document.createElement("div");
+    const roundNumber = resultAllRounds.length;
+    div.setAttribute("id", `round-${roundNumber}`);
+
+    const displayRound = document.createElement("h3");
+    const displayRoundResult = document.createElement("p");
+    displayRound.textContent = `Round ${roundNumber}`;
+    displayRoundResult.textContent = resultRound.result;
+
+    div.appendChild(displayRound);
+    div.appendChild(displayRoundResult);
+    result.appendChild(div);
+}
+
+
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -86,21 +104,10 @@ const resultScore = {
     "Computer": 0,
 };
 body.addEventListener("play", (e) => {
-    const humanChoice = e.detail.humanChoice;
-    const resultRound = playRound(humanChoice, getComputerChoice());
+    const resultRound = playRound(e.detail.humanChoice, getComputerChoice());
     resultAllRounds.push(resultRound);
 
-    const result = document.querySelector("#result");
-    const div = document.createElement("div");
-    const roundNumber = resultAllRounds.length;
-    div.setAttribute("id", `round-${roundNumber}`);
-    const displayRound = document.createElement("h3");
-    displayRound.textContent = `Round ${roundNumber}`;
-    const displayRoundResult = document.createElement("p");
-    displayRoundResult.textContent = resultRound.result;
-    div.appendChild(displayRound);
-    div.appendChild(displayRoundResult);
-    result.appendChild(div);
+    displayResult(resultRound, resultAllRounds);
     
     if (resultRound.winner !== null) {
         resultScore[resultRound.winner]++;
