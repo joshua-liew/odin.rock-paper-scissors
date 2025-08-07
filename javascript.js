@@ -80,6 +80,15 @@ function displayResult(resultRound, resultAllRounds) {
 }
 
 
+// pass in list of objects
+function displayWinner(gameWinner) {
+    const resultGame = document.createElement("h3");
+    const div = document.querySelector("#score");
+    resultGame.textContent = `The winner is ${gameWinner[0].name}!`;
+    div.append(resultGame);
+}
+
+
 function updateScores(winner) {
     if (winner !== null) {
         resultScore.map((player) => {
@@ -123,23 +132,11 @@ body.addEventListener("play", (e) => {
     resultAllRounds.push(resultRound);
 
     updateScores(resultRound.winner);
-
     const gameWinner = checkWinner();
-    if (gameWinner.length !== 0) {
-        const resultGame = document.createElement("h3");
-        const div = document.querySelector("#score");
-        resultGame.textContent = `The winner is ${gameWinner[0].name}!`;
-        div.append(resultGame);
-    }
 
     displayResult(resultRound, resultAllRounds);
-    //if (resultScore[resultRound.winner] === 5) {
-        //console.log("One player has reached 5 wins!");
-        //const resultGame = document.createElement("h3");
-        //const score = document.querySelector("#score");
-        //resultGame.textContent = `The winner is ${resultRound.winner}`;
-        //score.appendChild(resultGame);
-    //}
+    if (gameWinner.length !== 0)
+        displayWinner(gameWinner);
 
     const divHumanScore = document.querySelector("#human-score");
     const divComputerScore = document.querySelector("#computer-score");
