@@ -62,12 +62,6 @@ function playRound(humanChoice, computerChoice) {
 }
 
 
-function displayResult(text) {
-    const p = document.querySelector("#result");
-    p.textContent = text;
-}
-
-
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -86,10 +80,44 @@ buttons.forEach((button) => {
 
 
 const body = document.querySelector("body");
+const resultAllRounds = [];
+const resultScore = {
+    "Human": 0,
+    "Computer": 0,
+};
 body.addEventListener("play", (e) => {
     const humanChoice = e.detail.humanChoice;
     const resultRound = playRound(humanChoice, getComputerChoice());
-    console.log(resultRound);
+    resultAllRounds.push(resultRound);
 
-    displayResult(resultRound.result);
+    const result = document.querySelector("#result");
+    const div = document.createElement("div");
+    const roundNumber = resultAllRounds.length;
+    div.setAttribute("id", `round-${roundNumber}`);
+    const displayRound = document.createElement("h3");
+    displayRound.textContent = `Round ${roundNumber}`;
+    const displayRoundResult = document.createElement("p");
+    displayRoundResult.textContent = resultRound.result;
+    div.appendChild(displayRound);
+    div.appendChild(displayRoundResult);
+    result.appendChild(div);
+    
+    if (resultRound.winner !== null) {
+        resultScore[resultRound.winner]++;
+
+        if (resultScore[resultRound.winner] === 5) {
+            console.log("One player has reached 5 wins!");
+            const resultGame = document.createElement("h3");
+            const score = document.querySelector("#score");
+            resultGame.textContent = `The winner is ${resultRound.winner}`;
+            score.appendChild(resultGame);
+        }
+    }
+
+    const divHumanScore = document.querySelector("#human-score");
+    const divComputerScore = document.querySelector("#computer-score");
+    divHumanScore.textContent = `Your Score: ${resultScore.Human}`;
+    divComputerScore.textContent = `Computer Score: ${resultScore.Computer}`;
+
+    console.log(resultScore);
 });
