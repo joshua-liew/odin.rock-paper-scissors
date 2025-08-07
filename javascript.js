@@ -18,8 +18,8 @@ function getComputerChoice() {
 }
 
 
-function getHumanChoice() {
-    let input = prompt("What do you pick? (Type one of Rock, Paper, or Scissors)");
+function getHumanChoice(input) {
+    //let input = prompt("What do you pick? (Type one of Rock, Paper, or Scissors)");
     let choice = function (n) {
         switch (n.toLowerCase()) {
             case "rock":
@@ -63,6 +63,8 @@ function playRound(humanChoice, computerChoice) {
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        console.log(e.target.id);
+        //console.log(getHumanChoice(e.target.id));
+        let humanChoice = getHumanChoice(e.target.id);
+        console.log(humanChoice);
     });
 })
