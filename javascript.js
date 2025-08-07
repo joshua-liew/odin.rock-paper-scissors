@@ -59,26 +59,10 @@ function playRound(humanChoice, computerChoice) {
     return winner;
 }
 
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-
-        let winnerRound = playRound(humanSelection, computerSelection);
-        if (winnerRound === 'Human')    humanScore++;
-        if (winnerRound === 'Computer')  computerScore++;
-    }
-
-    if (humanScore === computerScore) {
-        console.log(`This game is a draw!`);
-    } else {
-        const winnerGame = humanScore > computerScore ? "Human" : "Computer";
-        const winnerGameScore = humanScore > computerScore ? humanScore : computerScore;
-        console.log(`The winner is the ${winnerGame} with a score of ${winnerGameScore}!`);
-    }
-}
-
-playGame();
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        console.log(e.target.id);
+    });
+})
