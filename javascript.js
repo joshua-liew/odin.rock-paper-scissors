@@ -80,6 +80,13 @@ function displayResult(resultRound, resultAllRounds) {
 }
 
 
+function updateScores(winner) {
+    if (winner !== null) {
+        resultScore[winner]++;
+    }
+}
+
+
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -109,16 +116,13 @@ body.addEventListener("play", (e) => {
 
     displayResult(resultRound, resultAllRounds);
     
-    if (resultRound.winner !== null) {
-        resultScore[resultRound.winner]++;
-
-        if (resultScore[resultRound.winner] === 5) {
-            console.log("One player has reached 5 wins!");
-            const resultGame = document.createElement("h3");
-            const score = document.querySelector("#score");
-            resultGame.textContent = `The winner is ${resultRound.winner}`;
-            score.appendChild(resultGame);
-        }
+    updateScores(resultRound.winner);
+    if (resultScore[resultRound.winner] === 5) {
+        console.log("One player has reached 5 wins!");
+        const resultGame = document.createElement("h3");
+        const score = document.querySelector("#score");
+        resultGame.textContent = `The winner is ${resultRound.winner}`;
+        score.appendChild(resultGame);
     }
 
     const divHumanScore = document.querySelector("#human-score");
