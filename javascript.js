@@ -143,9 +143,39 @@ body.addEventListener("play", (e) => {
     updateScores(resultRound.winner);
 
     const gameWinner = getWinner();
-    if (gameWinner !== null)
+    if (gameWinner !== null) {
         displayWinner(gameWinner);
+
+        let eventEnd = new CustomEvent('end');
+        body.dispatchEvent(eventEnd);
+    };
 
     displayResult(resultRound, resultAllRounds);
     displayScore();
+});
+body.addEventListener('end', () => {
+    console.log("GAME OVER!");
+    buttons.forEach((button) => {
+        button.setAttribute("disabled", "");
+    });
+
+    const div = document.createElement("div");
+    div.style["background-color"] = "#CDE8F4";
+    const h = document.createElement("h1");
+    h.textContent = 'GAME OVER!';
+    const divRetry = document.createElement("div");
+    div.appendChild(h);
+    div.appendChild(divRetry);
+
+    const p = document.createElement("p");
+    p.textContent = 'Do you want to play again?';
+    const button = document.createElement("button");
+    button.addEventListener('click', () => {
+        window.location.reload();
+    });
+    button.textContent = 'Play';
+    divRetry.appendChild(p);
+    divRetry.appendChild(button);
+
+    body.insertBefore(div, body.firstChild);
 });
