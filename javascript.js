@@ -65,7 +65,7 @@ function displayResult(text) {
     const p = document.createElement("p");
     p.textContent = text;
 
-    const result = document.querySelector("result");
+    const result = document.querySelector("#result");
     result.appendChild(p);
 }
 
