@@ -54,9 +54,19 @@ function playRound(humanChoice, computerChoice) {
         result = `You lose! ${humanChoice} loses to ${computerChoice}`;
         winner = `Computer`;
     }
-    console.log(result);
+    //console.log(result);
+    displayResult(result);
 
     return winner;
+}
+
+
+function displayResult(text) {
+    const p = document.createElement("p");
+    p.textContent = text;
+
+    const result = document.querySelector("result");
+    result.appendChild(p);
 }
 
 
