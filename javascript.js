@@ -80,11 +80,10 @@ function displayResult(resultRound, resultAllRounds) {
 }
 
 
-// pass in list of objects
-function displayWinner(gameWinner) {
+function displayWinner(winner) {
     const resultGame = document.createElement("h3");
     const div = document.querySelector("#score");
-    resultGame.textContent = `The winner is ${gameWinner[0].name}!`;
+    resultGame.textContent = `The winner is ${winner.name}!`;
     div.append(resultGame);
 }
 
@@ -98,9 +97,11 @@ function updateScores(winner) {
 }
 
 
-// returns array
+// returns object {player: str, score: int} or null
 function checkWinner() {
-    return resultScore.filter((player) => player.score === 5);
+    const check = resultScore.filter((player) => player.score === 5);
+    if (check.length !== 0) return check[0];
+    return null;
 }
 
 
@@ -132,11 +133,12 @@ body.addEventListener("play", (e) => {
     resultAllRounds.push(resultRound);
 
     updateScores(resultRound.winner);
+
     const gameWinner = checkWinner();
+    if (gameWinner !== null)
+        displayWinner(gameWinner);
 
     displayResult(resultRound, resultAllRounds);
-    if (gameWinner.length !== 0)
-        displayWinner(gameWinner);
 
     const divHumanScore = document.querySelector("#human-score");
     const divComputerScore = document.querySelector("#computer-score");
